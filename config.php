@@ -16,3 +16,5 @@ create_db_tables();
 initialize_users();
 
 const SITE_URL = "https://quera.yasbhos/";
+
+check_for_previous_login();

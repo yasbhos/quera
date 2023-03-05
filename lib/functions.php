@@ -81,9 +81,54 @@ function render_page(): void
 {
     include_once("templates/header.php");
 
+    if (function_exists("process_inputs")) {
+        process_inputs();
+    }
+
+    show_messages();
+
     if (function_exists("get_content")) {
         get_content();
     }
 
     include_once("templates/footer.php");
+}
+
+$messages = array();
+
+function add_message($message = null, $type = "error"): void
+{
+    if (!$message) {
+        return;
+    }
+
+    global $messages;
+    $messages[] = array(
+        "message" => $message,
+        "type" => $type
+    );
+}
+
+function show_messages(): void
+{
+    global $messages;
+    if (empty($messages)) {
+        return;
+    }
+
+    foreach ($messages as $item) {
+        $message = $item["message"];
+        $type = $item["type"];
+        if ($type == "error") {
+            $type = "danger";
+        } elseif ($type == "info") {
+            $type = "primary";
+        }
+        ?>
+        <div class="alert alert-<?php echo $type; ?> alert-dismissible fade show" role="alert">
+            <strong><?php echo $message; ?></strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <?php
+    }
 }
