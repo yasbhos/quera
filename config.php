@@ -1,5 +1,9 @@
 <?php
 
+session_start();
+
+const SESSION_EXPIRATION_TIME = 24 * 3600;
+
 const APP_TITLE = "Quera";
 
 include_once("lib/functions.php");
