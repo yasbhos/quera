@@ -5,3 +5,5 @@ require_once("config.php");
 include_once("templates/header.php");
 
 include_once("templates/footer.php");
+
+close_db_conn();
