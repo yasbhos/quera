@@ -14,3 +14,5 @@ include_all_php_files("db");
 create_db_tables();
 
 initialize_users();
+
+const SITE_URL = "https://quera.yasbhos/";
