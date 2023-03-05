@@ -22,13 +22,21 @@
     <nav class="py-2 bg-light border-bottom">
         <div class="container d-flex flex-wrap">
             <ul class="nav me-auto">
-                <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Dashboard</a></li>
+                <li class="nav-item"><a href="<?php echo home_url("home"); ?>" class="nav-link link-dark px-2">Home</a>
+                </li>
+                <li class="nav-item"><a href="<?php echo home_url("dashboard"); ?>" class="nav-link link-dark px-2">Dashboard</a>
+                </li>
             </ul>
             <ul class="nav">
-                <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Login</a></li>
-                <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Logout</a></li>
-                <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Sign up</a></li>
+                <?php if (is_user_logged_in()): ?>
+                    <li class="nav-item"><a href="<?php echo home_url("logout"); ?>" class="nav-link link-dark px-2">Logout</a>
+                    </li>
+                <?php else: ?>
+                    <li class="nav-item"><a href="<?php echo home_url("login"); ?>" class="nav-link link-dark px-2">Login</a>
+                    </li>
+                    <li class="nav-item"><a href="<?php echo home_url("sign_up"); ?>" class="nav-link link-dark px-2">Sign
+                            up</a></li>
+                <?php endif; ?>
             </ul>
         </div>
     </nav>
